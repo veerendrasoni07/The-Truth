@@ -1,9 +1,8 @@
 // Paste your Raw GitHub User Content URL here once you push the repo!
 const LEDGER_URL =
-  "https://raw.githubusercontent.com/YOUR_USERNAME/public-memory-tracker/main/scraper/data/ledger.json";
+  "https://raw.githubusercontent.com/veerendrasoni07/The-Truth/main/scraper/data/ledger.json";
 
-async function initDashboard() {
-  const container = document.getElementById("app-container");
+async function initDashboard() {  const container = document.getElementById("app-container");
   try {
     const res = await fetch(LEDGER_URL);
     if (!res.ok) throw new Error("Ledger fetch failed");
@@ -60,4 +59,14 @@ async function initDashboard() {
   }
 }
 
-initDashboard();
+if (typeof document === "undefined") {
+  console.error(
+    "app.js is browser code — it cannot run with Node.js.\n" +
+      "Open app/index.html in a browser, or serve the app folder:\n" +
+      "  cd app\n" +
+      "  python -m http.server 8080\n" +
+      "Then visit http://localhost:8080"
+  );
+} else {
+  initDashboard();
+}

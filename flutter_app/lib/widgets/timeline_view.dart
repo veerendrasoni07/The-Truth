@@ -31,7 +31,17 @@ class TimelineView extends StatelessWidget {
               ),
         ),
         const SizedBox(height: 16),
-        ...events.map((event) => _TimelineNode(event: event)),
+        Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              left: BorderSide(color: AppTheme.accent, width: 1),
+            ),
+          ),
+          padding: const EdgeInsets.only(left: 16),
+          child: Column(
+            children: events.map((event) => _TimelineNode(event: event)).toList(),
+          ),
+        ),
       ],
     );
   }
@@ -47,51 +57,38 @@ class _TimelineNode extends StatelessWidget {
     final bodyStyle = Theme.of(context).textTheme.bodySmall;
 
     return Padding(
-      padding: const EdgeInsets.only(left: 12, bottom: 24),
-      child: IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 20,
-              child: Column(
-                children: [
-                  Container(
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: AppTheme.accent,
-                      border: Border.all(color: Colors.white, width: 2),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      width: 1,
-                      color: AppTheme.accent,
-                    ),
-                  ),
-                ],
+      padding: const EdgeInsets.only(bottom: 24),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Transform.translate(
+            offset: const Offset(-21, 4),
+            child: Container(
+              width: 10,
+              height: 10,
+              decoration: BoxDecoration(
+                color: AppTheme.accent,
+                border: Border.all(color: Colors.white, width: 2),
               ),
             ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    event.date,
-                    style: bodyStyle?.copyWith(fontWeight: FontWeight.w700),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    event.eventDescription,
-                    style: bodyStyle?.copyWith(color: const Color(0xFF4B5563)),
-                  ),
-                ],
-              ),
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  event.date,
+                  style: bodyStyle?.copyWith(fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  event.eventDescription,
+                  style: bodyStyle?.copyWith(color: const Color(0xFF4B5563)),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

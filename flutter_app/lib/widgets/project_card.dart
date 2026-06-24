@@ -26,6 +26,7 @@ class ProjectCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
@@ -60,28 +61,37 @@ class ProjectCard extends StatelessWidget {
             ),
             LayoutBuilder(
               builder: (context, constraints) {
-                final isWide = constraints.maxWidth > 400;
-                return Flex(
-                  direction: isWide ? Axis.horizontal : Axis.vertical,
+                final isWide = constraints.maxWidth > 280;
+                final budgetTile = _MetricTile(
+                  label: 'BUDGET ENVELOPE',
+                  value: '₹$budget Crore',
+                  labelStyle: labelStyle,
+                  valueStyle: valueStyle,
+                );
+                final completionTile = _MetricTile(
+                  label: 'EXPECTED COMPLETION',
+                  value: project.expectedCompletion,
+                  labelStyle: labelStyle,
+                  valueStyle: valueStyle,
+                );
+
+                if (isWide) {
+                  return Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: budgetTile),
+                      const SizedBox(width: 16),
+                      Expanded(child: completionTile),
+                    ],
+                  );
+                }
+
+                return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: _MetricTile(
-                        label: 'BUDGET ENVELOPE',
-                        value: '₹$budget Crore',
-                        labelStyle: labelStyle,
-                        valueStyle: valueStyle,
-                      ),
-                    ),
-                    SizedBox(width: isWide ? 16 : 0, height: isWide ? 0 : 12),
-                    Expanded(
-                      child: _MetricTile(
-                        label: 'EXPECTED COMPLETION',
-                        value: project.expectedCompletion,
-                        labelStyle: labelStyle,
-                        valueStyle: valueStyle,
-                      ),
-                    ),
+                    budgetTile,
+                    const SizedBox(height: 12),
+                    completionTile,
                   ],
                 );
               },

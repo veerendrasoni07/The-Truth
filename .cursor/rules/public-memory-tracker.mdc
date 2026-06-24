@@ -1,0 +1,15 @@
+---
+description: Public Memory Tracker — Git-as-a-Database architecture
+alwaysApply: true
+---
+
+# Public Memory Tracker
+
+We are building an uncompromised Public Memory Tracker using Git-as-a-Database.
+
+- **Stack**: Python, Playwright, free-tier Gemini API (GitHub Secrets), flat JSON ledger
+- **Data store**: `scraper/data/ledger.json` — committed via GitHub Actions
+- **Frontend**: Vanilla JavaScript + Tailwind CSS, fetching JSON from GitHub Raw CDN
+- **Never** write code that implies a traditional server backend (no Express, Flask routes, AWS, PostgreSQL, or paid cloud DBs)
+
+Pipeline flow: Target Portal → Playwright/raw fetch → Gemini extraction → merge ledger → git commit → frontend reads raw.githubusercontent.com URL.

@@ -1,0 +1,5 @@
+{
+  "ledger_path": "data/ledger.json",
+  "gemini_model": "gemini-2.5-flash",
+  "target_url": "https://example.gov.in/infrastructure-updates"
+}

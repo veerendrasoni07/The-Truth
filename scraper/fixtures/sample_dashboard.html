@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sample Infrastructure Dashboard</title>
+  <script>
+    // Simulate JS-rendered table after page load
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        document.getElementById("app").innerHTML = `
+          <table class="project-data-table">
+            <tr>
+              <th>Project</th><th>Budget (Cr)</th><th>Start</th><th>Status</th><th>Updated</th>
+            </tr>
+            <tr>
+              <td>National Highway Expansion</td>
+              <td>1,250.5</td>
+              <td>2022-04-01</td>
+              <td>In Progress</td>
+              <td>2026-06-20</td>
+            </tr>
+            <tr>
+              <td>Rural Water Supply Scheme</td>
+              <td>890.0</td>
+              <td>2021-11-15</td>
+              <td>Completed</td>
+              <td>2026-05-30</td>
+            </tr>
+          </table>`;
+      }, 500);
+    });
+  </script>
+</head>
+<body>
+  <div id="app">Loading dashboard…</div>
+</body>
+</html>

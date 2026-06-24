@@ -1,0 +1,16 @@
+[
+  {
+    "project_name": "National Highway Expansion",
+    "budget_crores": "1,250.5",
+    "start_date": "2022-04-01",
+    "status": "In Progress",
+    "last_updated": "2026-06-20"
+  },
+  {
+    "project_name": "Rural Water Supply Scheme",
+    "budget_crores": "890.0",
+    "start_date": "2021-11-15",
+    "status": "Completed",
+    "last_updated": "2026-05-30"
+  }
+]

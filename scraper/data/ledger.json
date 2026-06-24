@@ -1,0 +1,15 @@
+{
+  "delhi_dehradun_expressway": {
+    "project_id": "delhi_dehradun_expressway",
+    "title": "Delhi-Dehradun Expressway",
+    "budget_crores": 13000.0,
+    "expected_completion": "June 2025",
+    "status": "Delayed",
+    "timeline": [
+      {
+        "date": "2026-06",
+        "event_description": "72% overall physical completion noted by National Highways Authority of India."
+      }
+    ]
+  }
+}
